@@ -14,23 +14,35 @@
 npm install feathers-rabbit-consume --save
 ```
 
-## Documentation
-
-TBD
-
 ## Complete Example
 
 Here's an example of a Feathers server that uses `feathers-rabbit-consume`. 
 
 ```js
 const feathers = require('@feathersjs/feathers');
-const plugin = require('feathers-rabbit-consume');
+const amqp = require('feathers-rabbit-consume');
 
 // Initialize the application
 const app = feathers();
 
 // Initialize the plugin
-app.configure(plugin());
+app.configure(amqp({
+    "url": "amqp://user:password@server",
+    "streams": [
+      {
+        "exchange": {
+          "name": "dummy-server",
+          "type": "fanout",
+          "durable": false
+        },
+        "queue": {
+          "name": "dummy-queue",
+          "service": "base/events",
+          "method": "create"
+        }
+      }
+    ]
+}));
 ```
 
 ## License
