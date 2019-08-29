@@ -1,7 +1,7 @@
 {
   "name": "feathers-rabbit-consume",
   "description": "Easy way to consume queues at rabbit.",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "homepage": "https://github.com/luizfer/feathers-rabbit-consume",
   "main": "lib/",
   "keywords": [
